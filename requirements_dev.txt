@@ -13,6 +13,5 @@ pytest-runner >= 5.1
 numpy
 sympy
 pandas
-numba
 nbsphinx
 numpydoc
