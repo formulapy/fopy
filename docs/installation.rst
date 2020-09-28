@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/AzizAlqasem/fopy
+    $ git clone https://github.com/formulapy/fopy
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/AzizAlqasem/fopy/tarball/master
+    $ curl -OJL https://github.com/formulapy/fopy/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/AzizAlqasem/fopy
-.. _tarball: https://github.com/AzizAlqasem/fopy/tarball/master
+.. _Github repo: https://github.com/formulapy/fopy
+.. _tarball: https://github.com/formulapy/fopy/tarball/master
