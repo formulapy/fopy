@@ -3,6 +3,7 @@
 """The setup script."""
 
 from setuptools import setup, find_packages
+from fopy import __version__
 
 with open('README.rst') as readme_file:
     readme = readme_file.read()
@@ -48,6 +49,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/AzizAlqasem/fopy',
-    version='0.0.0',
+    version=__version__,
     zip_safe=False,
 )
