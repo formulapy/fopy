@@ -11,7 +11,7 @@ deploy:
   password:
     secure: CRYrJS+zU61ai2U5myi4VtD1c9Jhlb47lvgQwdlmTdQ/DCWJPRaPn/ZaeJTN/H9w4Ef8Wd9tSBbatBZ42ibvKU6q64PesetNrnKFihpg9OBcPTQtmDZ5AxKJYHBG2AnxHK33h98EE0D2Rh0RqX5EeWfQlEf/1YE2J01XCQIPGmQTyzYOcso9EHNhkVz8uOPp/PwdqZcMvdxCZKezQa1SOPLmp8dyIKrfoyLYpxF6GUigyyPAJ6w3J9pHGjGNe7HcxUa3GwaFmYZWTsdgt4lslaXe6h4nZEIgMB29ou5M/uxtH7I2zPyp24XpQGSzSWQFMBVmXmzzSeqj+eQqHvfoa38EqiGnRmCGDG9qhHUwQ9ixGgr/FsbyuACf03udHr8HN3pJ44KIIQ7GInw9/+rvW0bm/Hoa1Brpa2Ytx4Iaw9BD6qvD4fpX5GVGDjQAHJyIM6k2JnraYeFH9ekqdd1qlcsrO9zcfbUjOmT7SrBKKgbL96fGXldaLDpiYY2y9jdYYQHu7UIN0+EP50NdE9YqAhFcjdwj/ceYpKFP1rm3Ddw8HARXzkdGoE6K7jcYtSWnksxt7W6kblrsBWCz5a+dB0uArJdUtSnip498ixgG/JH5lZH7AhJYVzPnUE7y6U4k3iWWun6cVMX6RD4KHl5YYKzzu/Sf0Cq++bNN9jbpNik=
   edge: true
-  #on:
-    #tags: true
-    #repo: formulapy/fopy
-    #python: 3.7
+  on:
+    tags: true
+    repo: formulapy/fopy
+    python: 3.7
