@@ -56,14 +56,14 @@
 
 """
 
-class Formulas:
 
+class Formulas:
     def __init__(self, Data, compile=True):
         pass
 
     # DataBase API
-    def search(self, *args, **kwargs): # should return Formulas obj
-        """ Search in Formulas Database and produce a subset of Formulas obj.
+    def search(self, *args, **kwargs):  # should return Formulas obj
+        """Search in Formulas Database and produce a subset of Formulas obj.
 
         Examples:
             >>> from fopy import Formulas
@@ -83,12 +83,12 @@ class Formulas:
         Parameters
         ----------
         data : str, list, tuple, dict, or pd.DataFrame
-            If str is provided, it must be a path to a .csv database. 
+            If str is provided, it must be a path to a .csv database.
         """
         pass
 
     def rm_data(self, data):
-        """ data to be removed from the original database, graph and compiled code.
+        """data to be removed from the original database, graph and compiled code.
 
         Parameters
         ----------
@@ -97,23 +97,32 @@ class Formulas:
         """
         pass
 
-    
     # Solve API;
-    def find(self,): # should return subset of Formulas obj
+    def find(
+        self,
+    ):  # should return subset of Formulas obj
         pass
 
-    def derive(self,): # should return a subset of Formulas obj
+    def derive(
+        self,
+    ):  # should return a subset of Formulas obj
         pass
-
 
     # Function API
-    def function(self, find_and_derive_args, ): # Uses all find/derive args + ?? 
+    def function(
+        self,
+        find_and_derive_args,
+    ):  # Uses all find/derive args + ??
         pass
 
-    def vector(self,):
+    def vector(
+        self,
+    ):
         pass
 
-    def loop(self,):
+    def loop(
+        self,
+    ):
         pass
 
     # Sympy API
@@ -121,16 +130,16 @@ class Formulas:
     # scipy API
 
 
-def __add__(self, other): #should join 'other' db to original
-    pass
-
-def __subs__(self, other): #should remove 'other' db from original
-    pass
-
-def __repr__(self,):
-    """return pd.DataFrame of the database
-    """
+def __add__(self, other):  # should join 'other' db to original
     pass
 
 
+def __subs__(self, other):  # should remove 'other' db from original
+    pass
 
+
+def __repr__(
+    self,
+):
+    """return pd.DataFrame of the database"""
+    pass
