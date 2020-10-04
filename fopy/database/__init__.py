@@ -1,4 +1,4 @@
-"""A Database Maneger Module
+p"""A Database Maneger Module
 
 Puplic API
 ==========
@@ -25,9 +25,17 @@ class FDb: #Puplic API
 
     def _load_data(self,):
         # Save data to .csv (if not exist)
-        # Test data (optional)
+        #   Convert data to pandas DataFrame
+        #   Save it to .cvs
         # Graph data
+        #   Generate a graph for all formulas
+        #   Save it
         # Compile data to fast code
+        #   Convert formulas to c/c++ comiled code
+        #       Formulas id should be shared and imutable
+        #   Save the compile code
+        # Test data (optional)
+        #   Evalute formulas against a test provided by the user
         pass
 
     def search(self, *args, **kwargs):  # should return Formulas obj
@@ -39,11 +47,12 @@ class FDb: #Puplic API
                         "Field"  : ['Math', 'Mechanics', 'Mechanics', "Relativity"]}
             >>> myfo = Formulas(data=data)
             >>> myfo.search("v")
-            ??
+            <Formulas_obj>
             >>> myfo.search(Field="Mechanics")
             ??
         """
-        # 
+        # Find all Matches
+        # creat a subset of data that is a Formulas obj
         pass
 
     def update(self, *args, **kwargs):
@@ -57,25 +66,5 @@ class FDb: #Puplic API
         mode : str
             "update", "add" or "remove", default "update"
             
-        """
-        pass
-
-    def add_data(self, data):
-        """data to be included to the original db, graph and compiled code.
-
-        Parameters
-        ----------
-        data : str, list, tuple, dict, or pd.DataFrame
-            If str is provided, it must be a path to a .csv database.
-        """
-        pass
-
-    def rm_data(self, data):
-        """data to be removed from the original database, graph and compiled code.
-
-        Parameters
-        ----------
-        data : str, list, tuple, dict, or pd.DataFrame
-            If str is provided, it must be a path to a .csv database.
         """
         pass
