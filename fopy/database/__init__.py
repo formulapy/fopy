@@ -1,4 +1,4 @@
-p"""A Database Maneger Module
+"""A Database Maneger Module
 
 Puplic API
 ==========
@@ -16,11 +16,12 @@ Private API
 ===========
  _load_data
 
+
 """
 
-class FDb: #Puplic API
+class Fdb: #Puplic API
 
-    def __init__ec(self, data, *args, **Kwargs):
+    def __init__(self, data, *args, **Kwargs):
         pass
 
     def _load_data(self,):
