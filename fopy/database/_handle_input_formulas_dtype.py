@@ -30,25 +30,25 @@ class _Handle_input_dtype: #Will be inherited by Dbmanager
 
 
     def _list_to_DataFrame(self, data_list):
-        self._dict_to_DataFrame({self.formula_col:data_list})
+        self._dict_to_DataFrame({self._formula_col:data_list})
 
     def _dict_to_DataFrame(self, data_dict):
-        if self.formula_col not in data_dict:
+        if self._formula_col not in data_dict:
             if str(list(data_dict.keys())[0]).isdigit():
                 # if the user input: {1:'f=m*a', 2:'v=a*t',}
-                self.data = {self.id_col: list(data_dict.keys())}
-                self.data[self.formula_col] = list(data_dict.values())
+                self.data = {self._id_col: list(data_dict.keys())}
+                self.data[self._formula_col] = list(data_dict.values())
                 self.data = pd.DataFrame(self.data)
             else:
                 raise Exception('The formula column name must be "{}"'\
-                                .format(self.formula_col))
+                                .format(self._formula_col))
         else:
             self.data = pd.DataFrame(data=data_dict)
         
     def _check_id(self,):
         column = list(self.data)
-        if self.id_col not in column:
-            self.data[self.id_col] = list(range(1, self.data.shape[0]+1))
+        if self._id_col not in column:
+            self.data[self._id_col] = list(range(1, self.data.shape[0]+1))
             #Sort column oreder for convienant
-            self.data = self.data[[self.id_col, *column]]
+            self.data = self.data[[self._id_col, *column]]
 

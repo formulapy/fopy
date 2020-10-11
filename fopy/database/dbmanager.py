@@ -17,6 +17,4 @@ class Dbmanager(_Handle_input_dtype, ):
 
     def _load_data(self, data):
         self._handle_input_dtype(data)
-        if self._save:
-            self._save_db()
         

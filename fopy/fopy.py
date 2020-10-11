@@ -55,22 +55,21 @@
 
 """
 import pandas as pd
-from .database.dbmanager import Dbmanager
+from fopy.database.dbmanager import Dbmanager
 
 
 
 class Formulas (Dbmanager):
-    def __init__(self, data, formula_col="Formula", id_col="ID",save=True, compile=True):
+    def __init__(self, data, formula_col="Formula", id_col="ID", compile=True):
         # Init Global Constant
-        #self.data = data
         self._formula_col = formula_col
         self._id_col = id_col
-        self._save = save
         self._compile = compile
 
         # Load Data
-        self._load_data(data) #Will init data -> self.data
-
+            # Handle dtypes
+        self._load_data(data)
+        
 
     # DataBase API
     def search(self, *args, **kwargs):  # should return Formulas obj
