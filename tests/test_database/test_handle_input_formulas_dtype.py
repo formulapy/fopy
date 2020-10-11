@@ -14,7 +14,7 @@ d_df = pd.DataFrame(data=d_dict_fos)
 good_df = pd.DataFrame(data={'ID':[1, 2], 'Formula':d_list})
 
 def test_Handle_input_dtype():
-    h_list = _Handle_input_dtype(data=d_list)
+    h_list = _Handle_input_dtype()._handle_input_dtype(data=d_list)
     assert_frame_equal(h_list.data, good_df)
     
     h_tuple = _Handle_input_dtype(data=d_tuple)

@@ -1,22 +1,5 @@
 """A Database Maneger Module
 
-Puplic API
-==========
-
-Search
-------
-
-add_data
---------
-
-rm_data
--------
-
-Private API
-===========
- _load_data
-
-
 """
 
 class Fdb: #Puplic API

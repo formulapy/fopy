@@ -2,30 +2,30 @@
 """
 import pandas as pd
 
-class _Handle_input_dtype:
+class _Handle_input_dtype: #Will be inherited by Dbmanager
 
-    def __init__(self, data, formula_col='Formula', id_col='ID',
-                save_all_derived_formulas=True):
+    #def _handle_input_dtype(self, data, formula_col='Formula', id_col='ID',
+    #            save_all_derived_formulas=True):
+    def _handle_input_dtype(self, data):
         """Convert data into pandas.DataFrame and generate a graph for formulas.
-
         """
-
         #* formula_col, id_col, and graph should be privet attributes "_a"
-        self.formula_col = formula_col
-        self.id_col = id_col
-        if not isinstance(data, pd.DataFrame):
-            if isinstance(data, list):
-                self._list_to_DataFrame(data)
-            elif isinstance(data, set) or isinstance(data, tuple):
-                self._list_to_DataFrame(list(data))
-            elif isinstance(data, dict):
-                self._dict_to_DataFrame(data)
-            else:
-                raise TypeError('The input data type: "{}" is not supported!\
-                                Instead use Pandas.DatFrame, list, dict, tuple\
-                                or set'.format(type(data)))
-        else:  # pd.DataFrame
+        #self.formula_col = formula_col
+        #self.id_col = id_col
+        if isinstance(data, str):   # path to .csv db
+            self.data = pd.read_csv(data)
+        elif isinstance(data, pd.DataFrame):
             self.data = data
+        elif isinstance(data, list):
+            self._list_to_DataFrame(data)
+        elif isinstance(data, set) or isinstance(data, tuple):
+            self._list_to_DataFrame(list(data))
+        elif isinstance(data, dict):
+            self._dict_to_DataFrame(data)
+        else:
+            raise TypeError('The input data type: "{}" is not supported!\
+                                Instead use Pandas.DatFrame, list, dict, tuple\
+                                ,set or str(path/to/data.csv)'.format(type(data)))
         self._check_id()
 
 
