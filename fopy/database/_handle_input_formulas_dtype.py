@@ -26,8 +26,9 @@ class _Handle_input_dtype:
                                 or set'.format(type(data)))
         else:  # pd.DataFrame
             self.data = data
+        self._check_id()
 
-    #when input data is not a DataFrame
+
     def _list_to_DataFrame(self, data_list):
         self._dict_to_DataFrame({self.formula_col:data_list})
 
@@ -35,20 +36,19 @@ class _Handle_input_dtype:
         if self.formula_col not in data_dict:
             if str(list(data_dict.keys())[0]).isdigit():
                 # if the user input: {1:'f=m*a', 2:'v=a*t',}
-                self.data = {}
-                self.data[self.id_col] = list(data_dict.keys())
+                self.data = {self.id_col: list(data_dict.keys())}
                 self.data[self.formula_col] = list(data_dict.values())
                 self.data = pd.DataFrame(self.data)
             else:
                 raise Exception('The formula column name must be "{}"'\
                                 .format(self.formula_col))
         else:
-            if self.id_col not in data_dict:
-                data_dict[self.id_col] = list(range(1, len\
-                                            (data_dict[self.formula_col])+1))
-            self.data = pd.DataFrame(data_dict)
-        #Sort column oreder for convienant
-        self.data = self.data[[self.id_col, self.formula_col]]
-    
+            self.data = pd.DataFrame(data=data_dict)
+        
     def _check_id(self,):
-        pass
+        column = list(self.data)
+        if self.id_col not in column:
+            self.data[self.id_col] = list(range(1, self.data.shape[0]+1))
+            #Sort column oreder for convienant
+            self.data = self.data[[self.id_col, *column]]
+
