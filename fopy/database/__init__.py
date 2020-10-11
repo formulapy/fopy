@@ -1,13 +1,14 @@
 """A Database Maneger Module
 
 """
+import pandas as pd
+from ._handle_input_formulas_dtype import _Handle_input_dtype
 
-class Fdb: #Puplic API
 
-    def __init__(self, data, *args, **Kwargs):
-        pass
+class Fdb(_Handle_input_dtype): #Puplic API
 
-    def _load_data(self,):
+
+    def _load_data(self, data):
         # Save data to .csv (if not exist)
         #   Convert data to pandas DataFrame
         #   Save it to .cvs
@@ -20,7 +21,8 @@ class Fdb: #Puplic API
         #   Save the compile code
         # Test data (optional)
         #   Evalute formulas against a test provided by the user
-        pass
+        self._handle_input_dtype(data)
+
 
     def search(self, *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.

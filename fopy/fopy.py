@@ -55,11 +55,11 @@
 
 """
 import pandas as pd
-from fopy.database.dbmanager import Dbmanager
+from fopy.database import Fdb
 
 
 
-class Formulas (Dbmanager):
+class Formulas (Fdb):
     def __init__(self, data, formula_col="Formula", id_col="ID", compile=True):
         # Init Global Constant
         self._formula_col = formula_col
@@ -69,7 +69,7 @@ class Formulas (Dbmanager):
         # Load Data
             # Handle dtypes
         self._load_data(data)
-        
+
 
     # DataBase API
     def search(self, *args, **kwargs):  # should return Formulas obj
