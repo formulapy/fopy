@@ -54,7 +54,7 @@
         # Wraper - loops over formulas obj and apply scipy function ??
 
 """
-import pandas as pd
+
 from fopy.database import Fdb
 
 
@@ -71,9 +71,10 @@ class Formulas (Fdb):
         self._load_data(data)
 
 
-    # DataBase API
+    # Database API
     def search(self, *args, **kwargs):  # should return Formulas obj
-    # Search in Formulas Database and produce a subset of Formulas obj.
+        """Search in Formulas Database and produce a subset of Formulas obj.
+        """
         return Formulas(data=self._search(*args, **kwargs))
 
 

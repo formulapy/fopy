@@ -1,7 +1,6 @@
 """A Database Maneger Module
 
 """
-import pandas as pd
 from ._handle_input_formulas_dtype import _Handle_input_dtype
 from collections.abc import Iterable
 #from fopy import Formulas
