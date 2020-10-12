@@ -58,7 +58,6 @@
 from fopy.database import Fdb
 
 
-
 class Formulas (Fdb):
     def __init__(self, data, formula_col="Formula", id_col="ID", compile=True):
         # Init Global Constant

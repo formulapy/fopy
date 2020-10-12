@@ -3,11 +3,10 @@
 """
 from ._handle_input_formulas_dtype import _Handle_input_dtype
 from collections.abc import Iterable
-#from fopy import Formulas
+from ._search import  _Search
 
-class Fdb(_Handle_input_dtype): #Puplic API
-
-
+class Fdb(_Handle_input_dtype, _Search): #Puplic API
+    
     def _load_data(self, data):
         # Save data to .csv (if not exist)
         #   Convert data to pandas DataFrame
@@ -23,33 +22,6 @@ class Fdb(_Handle_input_dtype): #Puplic API
         #   Evalute formulas against a test provided by the user
         self._handle_input_dtype(data)
 
-
-    def _search(self, *args, **kwargs):  # should return Formulas obj
-        """Search in Formulas Database and produce a subset of Formulas obj.
-
-        Examples:
-            >>> from fopy import Formulas
-            >>> data = {'Formula': ['A = pi * r**2', 'a = v/t', 'd = v*t', 'E = m*c**2],
-                        "Field"  : ['Math', 'Mechanics', 'Mechanics', "Relativity"]}
-            >>> myfo = Formulas(data=data)
-            >>> myfo.search("v")
-            <Formulas_obj>
-            >>> myfo.search(Field="Mechanics")
-            ??
-        """
-        # Find all Matches
-        if kwargs:
-            col = list(kwargs)[0]
-            args = kwargs[col]
-            if isinstance(args, str):
-                args = (args, )
-        else:
-            col = self._formula_col
-        match = self.data[col].str.contains('|'.join(args))
-        return self.data[match]
-
-        # creat a subset of data that is a Formulas obj
-        
 
     def update(self, *args, **kwargs):
         """Update the database eith by including data to the original database or by

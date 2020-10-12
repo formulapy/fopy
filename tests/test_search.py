@@ -18,7 +18,7 @@ def test_search():
     fo_field_CM = Formulas(data=df_match_field_CM)
 
     assert_frame_equal(fo.search('Acc').data, fo_Acc.data)
-    assert_frame_equal(fo.search(Field='CM').data, fo_field_CM.data)
+    assert_frame_equal(fo.search('CM', col='Field').data, fo_field_CM.data)
 
 
 
