@@ -3,7 +3,8 @@
 """
 import pandas as pd
 from ._handle_input_formulas_dtype import _Handle_input_dtype
-
+from collections.abc import Iterable
+#from fopy import Formulas
 
 class Fdb(_Handle_input_dtype): #Puplic API
 
@@ -24,7 +25,7 @@ class Fdb(_Handle_input_dtype): #Puplic API
         self._handle_input_dtype(data)
 
 
-    def search(self, *args, **kwargs):  # should return Formulas obj
+    def _search(self, *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.
 
         Examples:
@@ -38,8 +39,18 @@ class Fdb(_Handle_input_dtype): #Puplic API
             ??
         """
         # Find all Matches
+        if kwargs:
+            col = list(kwargs)[0]
+            args = kwargs[col]
+            if isinstance(args, str):
+                args = (args, )
+        else:
+            col = self._formula_col
+        match = self.data[col].str.contains('|'.join(args))
+        return self.data[match]
+
         # creat a subset of data that is a Formulas obj
-        pass
+        
 
     def update(self, *args, **kwargs):
         """Update the database eith by including data to the original database or by

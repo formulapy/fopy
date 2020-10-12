@@ -73,19 +73,9 @@ class Formulas (Fdb):
 
     # DataBase API
     def search(self, *args, **kwargs):  # should return Formulas obj
-        """Search in Formulas Database and produce a subset of Formulas obj.
+    # Search in Formulas Database and produce a subset of Formulas obj.
+        return Formulas(data=self._search(*args, **kwargs))
 
-        Examples:
-            >>> from fopy import Formulas
-            >>> data = {'Formula': ['A = pi * r**2', 'a = v/t', 'd = v*t', 'E = m*c**2],
-                        "Field"  : ['Math', 'Mechanics', 'Mechanics', "Relativity"]}
-            >>> myfo = Formulas(data=data)
-            >>> myfo.search("v")
-            ??
-            >>> myfo.search(Field="Mechanics")
-            ??
-        """
-        pass
 
     def add_data(self, data):
         """data to be included to the original db, graph and compiled code.
@@ -108,31 +98,20 @@ class Formulas (Fdb):
         pass
 
     # Solve API;
-    def find(
-        self,
-    ):  # should return subset of Formulas obj
+    def find(self,):  # should return subset of Formulas obj
         pass
 
-    def derive(
-        self,
-    ):  # should return a subset of Formulas obj
+    def derive(self,):  # should return a subset of Formulas obj
         pass
 
     # Function API
-    def function(
-        self,
-        find_and_derive_args,
-    ):  # Uses all find/derive args + ??
+    def function(self, find_and_derive_args,):  # Uses all find/derive args + ??
         pass
 
-    def vector(
-        self,
-    ):
+    def vector(self,):
         pass
 
-    def loop(
-        self,
-    ):
+    def loop(self,):
         pass
 
     # Sympy API
@@ -148,8 +127,5 @@ def __subs__(self, other):  # should remove 'other' db from original
     pass
 
 
-def __repr__(
-    self,
-):
-    """return pd.DataFrame of the database"""
-    pass
+def __repr__(self,):
+    return self.data
