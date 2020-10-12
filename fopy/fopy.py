@@ -53,29 +53,30 @@
     # Scipy API
         # Wraper - loops over formulas obj and apply scipy function ??
 
-
 """
 
+from fopy.database import Fdb
 
-class Formulas:
-    def __init__(self, Data, compile=True):
-        pass
 
-    # DataBase API
+
+class Formulas (Fdb):
+    def __init__(self, data, formula_col="Formula", id_col="ID", compile=True):
+        # Init Global Constant
+        self._formula_col = formula_col
+        self._id_col = id_col
+        self._compile = compile
+
+        # Load Data
+            # Handle dtypes
+        self._load_data(data)
+
+
+    # Database API
     def search(self, *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.
-
-        Examples:
-            >>> from fopy import Formulas
-            >>> data = {'Formula': ['A = pi * r**2', 'a = v/t', 'd = v*t', 'E = m*c**2],
-                        "Field"  : ['Math', 'Mechanics', 'Mechanics', "Relativity"]}
-            >>> myfo = Formulas(data=data)
-            >>> myfo.search("v")
-            ??
-            >>> myfo.search(Field="Mechanics")
-            ??
         """
-        pass
+        return Formulas(data=self._search(*args, **kwargs))
+
 
     def add_data(self, data):
         """data to be included to the original db, graph and compiled code.
@@ -98,31 +99,20 @@ class Formulas:
         pass
 
     # Solve API;
-    def find(
-        self,
-    ):  # should return subset of Formulas obj
+    def find(self,):  # should return subset of Formulas obj
         pass
 
-    def derive(
-        self,
-    ):  # should return a subset of Formulas obj
+    def derive(self,):  # should return a subset of Formulas obj
         pass
 
     # Function API
-    def function(
-        self,
-        find_and_derive_args,
-    ):  # Uses all find/derive args + ??
+    def function(self, find_and_derive_args,):  # Uses all find/derive args + ??
         pass
 
-    def vector(
-        self,
-    ):
+    def vector(self,):
         pass
 
-    def loop(
-        self,
-    ):
+    def loop(self,):
         pass
 
     # Sympy API
@@ -138,8 +128,5 @@ def __subs__(self, other):  # should remove 'other' db from original
     pass
 
 
-def __repr__(
-    self,
-):
-    """return pd.DataFrame of the database"""
-    pass
+def __repr__(self,):
+    return self.data

@@ -1,29 +1,14 @@
-p"""A Database Maneger Module
-
-Puplic API
-==========
-
-Search
-------
-
-add_data
---------
-
-rm_data
--------
-
-Private API
-===========
- _load_data
+"""A Database Maneger Module
 
 """
+from ._handle_input_formulas_dtype import _Handle_input_dtype
+from collections.abc import Iterable
+#from fopy import Formulas
 
-class FDb: #Puplic API
+class Fdb(_Handle_input_dtype): #Puplic API
 
-    def __init__ec(self, data, *args, **Kwargs):
-        pass
 
-    def _load_data(self,):
+    def _load_data(self, data):
         # Save data to .csv (if not exist)
         #   Convert data to pandas DataFrame
         #   Save it to .cvs
@@ -36,9 +21,10 @@ class FDb: #Puplic API
         #   Save the compile code
         # Test data (optional)
         #   Evalute formulas against a test provided by the user
-        pass
+        self._handle_input_dtype(data)
 
-    def search(self, *args, **kwargs):  # should return Formulas obj
+
+    def _search(self, *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.
 
         Examples:
@@ -52,8 +38,18 @@ class FDb: #Puplic API
             ??
         """
         # Find all Matches
+        if kwargs:
+            col = list(kwargs)[0]
+            args = kwargs[col]
+            if isinstance(args, str):
+                args = (args, )
+        else:
+            col = self._formula_col
+        match = self.data[col].str.contains('|'.join(args))
+        return self.data[match]
+
         # creat a subset of data that is a Formulas obj
-        pass
+        
 
     def update(self, *args, **kwargs):
         """Update the database eith by including data to the original database or by
