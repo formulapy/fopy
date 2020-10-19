@@ -6,7 +6,10 @@ from collections.abc import Iterable
 from ._search import  _Search
 
 class Fdb(_Handle_input_dtype, _Search): #Puplic API
-    
+
+    def _search(self, pat:str or tuple=None, col:str=None, operator='or', match=None, *args, **kwargs):
+        return self.data[self._search_(pat, col=col, operator=operator, *args, **kwargs)]
+     
     def _load_data(self, data):
         # Save data to .csv (if not exist)
         #   Convert data to pandas DataFrame

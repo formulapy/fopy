@@ -71,31 +71,10 @@ class Formulas (Fdb):
 
 
     # Database API
-    def search(self, *args, **kwargs):  # should return Formulas obj
+    def search(self, pat:str or tuple=None, col:str=None, operator='or', *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.
         """
-        return Formulas(data=self._search(*args, **kwargs))
-
-
-    def add_data(self, data):
-        """data to be included to the original db, graph and compiled code.
-
-        Parameters
-        ----------
-        data : str, list, tuple, dict, or pd.DataFrame
-            If str is provided, it must be a path to a .csv database.
-        """
-        pass
-
-    def rm_data(self, data):
-        """data to be removed from the original database, graph and compiled code.
-
-        Parameters
-        ----------
-        data : str, list, tuple, dict, or pd.DataFrame
-            If str is provided, it must be a path to a .csv database.
-        """
-        pass
+        return Formulas(data=self._search(pat, col=col, operator=operator, *args, **kwargs))
 
     # Solve API;
     def find(self,):  # should return subset of Formulas obj
@@ -119,13 +98,13 @@ class Formulas (Fdb):
     # scipy API
 
 
-def __add__(self, other):  # should join 'other' db to original
-    pass
+    def __add__(self, other):  # should join 'other' db to original
+        pass
 
 
-def __subs__(self, other):  # should remove 'other' db from original
-    pass
+    def __subs__(self, other):  # should remove 'other' db from original
+        pass
 
 
-def __repr__(self,):
-    return self.data
+    def __repr__(self,):
+        return self.data.__repr__()

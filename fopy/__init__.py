@@ -2,4 +2,4 @@
 
 from fopy.fopy import Formulas
 
-__version__ = 'v0.0.1dev0'
+__version__ = 'v0.0.1dev5'
