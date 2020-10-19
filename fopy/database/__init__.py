@@ -8,21 +8,23 @@ from ._search import  _Match
 class Fdb(_Handle_input_dtype, _Match): #Puplic API
 
     def _search(self, pat:str or tuple=None, *args, **kwargs):
-        if 'operator' not in kwargs:
-            operator = ['and'] * len(pat)  #default
-        else:
-            operator = kwargs['operator']
-            if isinstance(operator, str):
-                operator = [operator] * len(pat)
+        assert pat or kwargs, 'Search takes at least one arg!'
+        
         col = self._formula_col if 'col' not in kwargs else kwargs['col']
-        match = 0 if operator[0] == 'or' else 1
         if pat:
             if isinstance(pat, str):
                 pat = (pat, )
             pat = (*pat, *args)
             kwargs[col] = pat
-        columns = self.data.columns.to_list()
+        if 'operator' not in kwargs:
+            operator = ['and'] * len(kwargs)  #default
+        else:
+            operator = kwargs['operator']
+            if isinstance(operator, str):
+                operator = [operator] * len(kwargs)
+        match = 0 if operator[0] == 'or' else 1
         #all keys in kwargs must be in data column
+        columns = self.data.columns.to_list()
         search = {kw: kwargs[kw] for kw in kwargs if kw in columns}
         return self.data[self._match(search=search, operator=operator, match=match)]
      

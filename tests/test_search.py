@@ -17,11 +17,18 @@ def test_search():
     fo_Acc = Formulas(data=df_match_Acc)
     fo_field_CM = Formulas(data=df_match_field_CM)
 
+    # General Search
     assert_frame_equal(fo.search('Acc').data, fo_Acc.data)
     assert_frame_equal(fo.search('CM', col='Field').data, fo_field_CM.data)
 
+    # Tow args and a kwargs
     assert_frame_equal(fo.search('Force', 'mass', Field='CM').data, pd.DataFrame(data={'ID':[1], 'Formula':['Force = mass * Acc'],\
                                   'Field':['CM']}) )
+
+    # No args and kwargs
+
+    # Only kwargs
+    assert_frame_equal(fo.search(Field='EM').data, pd.DataFrame(data={'ID':[3], 'Formula':['Electric_field = Force/charge'],'Field':['EM']}, index=[2]))
 
 
 
