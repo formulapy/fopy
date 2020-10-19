@@ -8,6 +8,39 @@ class _Search:
         # Search for args/var/func. -> List[str]
         # Search for Build-in math function. eg., sin, diff. -> List[str]
 
+    def __search(self, *args, **kwargs):
+        
+        if "operator" not in kwargs:
+            kwargs['operator'] = 'or'
+        if "_match" not in kwargs:
+            _match = 0 if kwargs['operator'] == 'or' else 1
+        else:
+            _match = kwargs['_match']
+        # if user only provide args; _search('a', 'b', 'c')
+        if args:
+            pat = args
+        # when kwargs are provided: _search(formula=('f', 'a'), field='Math', Book='Calculus')
+        elif kwargs:            
+            columns = self.data.columns.to_list()
+            for kw in kwargs:
+                if kw in columns:
+                    if kwargs['operator'] == 'or':
+                        _match = _match | self._search(pat=kwargs[kw], col=kw, operator=operator, match=match)
+                    match = match & self._match
+            return match
+                         
+        if "col" not in kwargs:
+            col = self._formula_col
+        if isinstance(pat, str):
+            pat = (pat, )
+        if operator == 'or':
+            return _match | self._match(pat, col=col, operator=operator, match=_match)
+        # operator = and
+        return _match & self._match(pat, col=col, operator=operator, match=_match)
+
+
+
+
     def _search_(self, pat:str or tuple=None, col:str=None, operator='or', match=None, *args, **kwargs) -> pd.Series:
         """General Search in Formulas Database and produce a subset of Formulas obj.
 
