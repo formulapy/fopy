@@ -10,7 +10,16 @@ class _Match:
 
 
     def _match(self, search:dict, operator:list, match) -> pd.Series:
-        """General Search in Formulas Database and produce a subset of Formulas obj.
+        """Search in a database and produce a series of bool
+
+        Parameters
+        ----------
+        search : dict
+            { a column : [pattern to be searched, ] }
+        operator : list
+            Define the searching mode with either "and" or "or", default "and"
+        match : pd.Series[bool]
+            Initial Matching to be included, default 1 for operator="and", and 0 for operator="or" 
         """ 
         for i, col in enumerate(search):
             if operator[i] == 'or':

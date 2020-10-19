@@ -21,7 +21,7 @@ def test_search():
     assert_frame_equal(fo.search('Acc').data, fo_Acc.data)
     assert_frame_equal(fo.search('CM', col='Field').data, fo_field_CM.data)
 
-    # Tow args and a kwargs
+    # Two args and a kwargs
     assert_frame_equal(fo.search('Force', 'mass', Field='CM').data, pd.DataFrame(data={'ID':[1], 'Formula':['Force = mass * Acc'],\
                                   'Field':['CM']}) )
 
