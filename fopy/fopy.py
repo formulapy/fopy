@@ -71,10 +71,10 @@ class Formulas (Fdb):
 
 
     # Database API
-    def search(self, pat:str or tuple=None, col:str=None, operator='or', *args, **kwargs):  # should return Formulas obj
+    def search(self, pat:str or tuple=None, *args, **kwargs):  # should return Formulas obj
         """Search in Formulas Database and produce a subset of Formulas obj.
         """
-        return Formulas(data=self._search(pat, col=col, operator=operator, *args, **kwargs))
+        return Formulas(data=self._search(pat, *args, **kwargs))
 
     # Solve API;
     def find(self,):  # should return subset of Formulas obj
